@@ -1,7 +1,7 @@
 {
   "name": "@nexssp/markdown",
   "description": "Basic markdown functions.. eg markdown->terminal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exports": {
     "import": "./index.mjs",
     "require": "./index.js"
