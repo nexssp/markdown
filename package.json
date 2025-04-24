@@ -1,14 +1,17 @@
 {
   "name": "@nexssp/markdown",
   "description": "Basic markdown functions.. eg markdown->terminal",
-  "version": "1.0.1",
+  "version": "1.1.0",
+  "type": "module",
   "exports": {
-    "import": "./index.mjs",
-    "require": "./index.js"
+    "import": "./index.esm.js",
+    "require": "./index.js",
+    "types": "./index.d.ts"
   },
   "files": [
     "index.js",
-    "index.mjs"
+    "index.esm.js",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "npx @nexssp/test"
@@ -22,7 +25,7 @@
   "author": "Marcin Polak <mapoart@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@nexssp/ansi": "^1.1.5"
+    "@nexssp/ansi": "^1.2.2"
   },
   "repository": {
     "type": "git",

@@ -9,19 +9,24 @@ const h1 = (text) => ansi.bold(ansi.purple(`${text}`))
 const bold = (text) => ansi.bold(`${text}`)
 const italic = (text) => ansi.italic(`${text}`)
 const strikethrough = (text) => ansi.strikethrough(`${text}`)
+const link = (text, url) => ansi.blue(ansi.underscore(text)) + ' ' + ansi.gray(`(${url})`)
 
 const toTerminal = (text) =>
   text
-    .replace(/^###### (.*$)/gim, h6('$1'))
-    .replace(/^##### (.*$)/gim, h5('$1'))
-    .replace(/^#### (.*$)/gim, h4('$1'))
-    .replace(/^### (.*$)/gim, h3('$1'))
-    .replace(/^## (.*$)/gim, h2('$1'))
-    .replace(/^# (.*$)/gim, h1('$1'))
-    .replace(/\*\*\*(.*)\*\*\*/gim, bold(italic('$1')))
-    .replace(/\*\*(.*)\*\*/gim, bold('$1'))
-    .replace(/\*(.*)\*/gim, italic('$1'))
-    .replace(/\~\~(.*)\~\~/gim, strikethrough('$1'))
+    // Headers
+    .replace(/^###### (.*)$/gim, (_, t) => h6(t))
+    .replace(/^##### (.*)$/gim, (_, t) => h5(t))
+    .replace(/^#### (.*)$/gim, (_, t) => h4(t))
+    .replace(/^### (.*)$/gim, (_, t) => h3(t))
+    .replace(/^## (.*)$/gim, (_, t) => h2(t))
+    .replace(/^# (.*)$/gim, (_, t) => h1(t))
+    // Links (added this new section)
+    .replace(/\[(.*?)\]\((.*?)\)/g, (_, text, url) => link(text, url))
+    // Text formatting
+    .replace(/\*\*\*(.*?)\*\*\*/g, (_, t) => bold(italic(t)))
+    .replace(/\*\*(.*?)\*\*/g, (_, t) => bold(t))
+    .replace(/\*(.*?)\*/g, (_, t) => italic(t))
+    .replace(/~~(.*?)~~/g, (_, t) => strikethrough(t))
     .trim()
 
 module.exports = { toTerminal }

@@ -1,5 +1,7 @@
 # @nexssp/markdown
 
+* 24.04.2025 - added Typescript support
+
 This module is experimental.
 
 ## Functions
